@@ -1,0 +1,41 @@
+
+INFO:dc34_console::power: New orientation: FaceDown (src/power.rs:460)
+INFO:dc34_vault: screen orientation event (src/main.rs:450)
+🔼ver∴🔥ver
+🔼ver∴🔥ver
+INFO:ux_api::menu: selected index 2 (/mnt/f/code/xous-core/libs/ux-api/src/menu.rs:225)
+INFO:dc34_vault::actions: readout took 0 ms for 0 elements (src/actions.rs:1282)
+🔼ver∴🔥ver
+🔼ver∴🔥ver
+🔼ver∴🔥ver
+🔼ver∴🔥ver
+🔼ver∴🔥ver
+🔼ver∴🔥ver
+🔼ver∴🔥ver
+🔼ver∴🔥ver
+🔼ver
+🔼ver
+🔼ver
+🔼ver
+🔼ver
+🔼ver
+🔼ver
+🔼ver
+🔼ver
+INFO:ux_api::menu: selected index 1 (/mnt/f/code/xous-core/libs/ux-api/src/menu.rs:225)
+INFO:bao_video: warmed up decoder with Ver1 (services/bao-video/src/main.rs:471)
+INFO:bao_video: Camera pid 2145, mid 78 (services/bao-video/src/main.rs:534)
+INFO:bao_video: 320x240 resolution setup with 256x240 slicing (services/bao-video/src/main.rs:541)
+INFO:bao_video: DataEcc (services/bao-video/src/main.rs:798)
+INFO:dc34_vault::actions: QR code metadata: MetaData { version: Version(7), ecc_level: 0, mask: 6 } (src/actions.rs:1305)
+INFO:dc34_vault::actions: got qr data: otpauth://totp/SERIAL:leak-demo@local?secret=JBSWY3DPEHPK3PXP&issuer=SERIAL&algorithm=SHA1&digits=6&period=30, mode: Password (src/actions.rs:1328)
+INFO:bao1x_hal_service::servers::rtc: RTC rollover: 1 (services/bao1x-hal-service/src/servers/rtc.rs:68)
+INFO:dc34_vault::actions: readout took 11 ms for 0 elements (src/actions.rs:1282)
+INFO:dc34_vault::actions: readout took 134 ms for 0 elements (src/actions.rs:1282)
+INFO:dc34_vault::storage: [118, 101, 114, 115, 105, 111, 110, 58, 48, 10, 115, 101, 99, 114, 101, 116, 58, 74, 66, 83, 87, 89, 51, 68, 80, 69, 72, 80, 75, 51, 80, 88, 80, 10, 110, 97, 109, 101, 58, 83, 69, 82, 73, 65, 76, 58, 108, 101, 97, 107, 45, 100, 101, 109, 111, 64, 108, 111, 99, 97, 108, 10, 97, 108, 103, 111, 114, 105, 116, 104, 109, 58, 83, 72, 65, 49, 10, 110, 111, 116, 101, 115, 58, 83, 69, 82, 73, 65, 76, 10, 100, 105, 103, 105, 116, 115, 58, 54, 10, 116, 105, 109, 101, 115, 116, 101, 112, 58, 51, 48, 10, 104, 111, 116, 112, 58, 48, 10, 99, 116, 105, 109, 101, 58, 52, 49, 57, 52, 53, 49, 51, 10] (src/storage.rs:533)
+INFO:dc34_vault::storage: "version:0\nsecret:JBSWY3DPEHPK3PXP\nname:SERIAL:leak-demo@local\nalgorithm:SHA1\nnotes:SERIAL\ndigits:6\ntimestep:30\nhotp:0\nctime:4194513\n" (src/storage.rs:535)
+INFO:bao_video: warmed up decoder with Ver1 (services/bao-video/src/main.rs:471)
+INFO:bao_video: Camera pid 2145, mid 78 (services/bao-video/src/main.rs:534)
+INFO:bao_video: 320x240 resolution setup with 256x240 slicing (services/bao-video/src/main.rs:541)
+INFO:dc34_vault::actions: QR code metadata: MetaData { version: Version(3), ecc_level: 0, mask: 1 } (src/actions.rs:1305)
+INFO:dc34_vault::actions: got qr data: SERIALDUMP://TOTP-RELOAD-TRIGGER-SCAN-IN-TOTP-MODE, mode: Totp (src/actions.rs:1328)

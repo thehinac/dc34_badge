@@ -1,0 +1,90 @@
+[06:01:31.746Z] === boot1 audit capture log=C:\Users\thehinac\dc34-lab\captures\boot1_audit_20260807T060131Z.log ===
+[06:01:31.746Z] ACTION: Power-cycle or reset the badge NOW (bootwait should stop in boot1).
+[06:01:31.746Z] Hold nothing unless needed; wait for USB re-enumerate.
+[06:01:31.746Z] PORTS ['COM1', 'COM17', 'COM4']
+[06:01:31.843Z] OPEN COM17
+[06:01:32.500Z] >>> SENT help + audit (round 1)
+[06:01:32.767Z] Command not recognized: 
+[06:01:32.767Z] Commands include: altboot, audit, boot, boardtype, bootwait, echo, idmode, ifr, localecho, lockdown, paranoid, reset, self_destruct, skipping, uf2
+[06:01:32.767Z] help
+[06:01:32.767Z] Command not recognized: help
+[06:01:32.767Z] Commands include: altboot, audit, boot, boardtype, bootwait, echo, idmode, ifr, localecho, lockdown, paranoid, reset, self_destruct, skipping, uf2
+[06:01:33.022Z] audit
+[06:01:33.022Z] Board type reads as: Oem
+[06:01:33.022Z] Boot partition is: Ok(PrimaryPartition)
+[06:01:33.022Z] Semver is: v0.10.1-0-gbcfdca404
+[06:01:33.022Z] Description is: Towards 0.10.1 beta-1
+[06:01:33.022Z] Stepping is: A0
+[06:01:33.022Z] Device serializer: d8a9fbb0-1b8cf420-3f6250c8-f19ed54c
+[06:01:33.022Z] Public serial number: CP4FCB
+[06:01:33.022Z] UUID: 18c26e7d-ebf4f0f3-1de80b4c-8ec4768c
+[06:01:33.022Z] Paranoid mode: 0/0
+[06:01:33.022Z] Possible attack attempts: 0
+[06:01:33.022Z] Revocations:
+[06:01:33.022Z] Stage       key0     key1     key2     key3
+[06:01:33.022Z] boot0       enabled  enabled  enabled  enabled  
+[06:01:33.022Z] boot1       enabled  enabled  enabled  enabled  
+[06:01:33.022Z] next stage  enabled  enabled  enabled  enabled  
+[06:01:33.022Z] Boot0: key 0/0 (bao1) -> 60000000
+[06:01:33.022Z] Boot1: key 2/2 (beta) -> 60020000
+[06:01:33.022Z] Next stage: key 2/2 (beta) -> 60060000
+[06:01:33.022Z] Erase proof: uninit or access denied
+[06:01:33.022Z] auto-audit limit: 3
+[06:01:33.022Z] boot0 partition: a0680a73106600c4ece34f9393fc5c8eed4885e844b1b78b58fb3a8a299a885cd794c667a5e787083bce46bf7aff8d3f4affa6a93a38ba7b507bb0d47c70fa01
+[06:01:33.022Z] boot0 code only: 563802e7f10fd0ca0a1c700c6313eff624aa57d9cd88d3c33af4b720eff5480432e01c116925a324a96e12d92953d7cb6076ea4557a22058e1a61be4c2b4dee2
+[06:01:33.022Z] boot0 baobit toolchain: 441559d7e1984623ec0a52f60f90240c740b6c41
+[06:01:33.022Z] boot1 partition: 6fa89f57e7c8333d53051bccaf93309be0844cefb91d55ce4960702840662a6337c55c60c66414fcd32aed381bf81663644deb83826dcad38c800ba4acecaa80
+[06:01:33.022Z] boot1 code only: 5d21a762c0093c9e1a50c958f875f2d4cf9d97f84ad9941b2f739c96d6531538e7ade13da90c4f7b242a15282ced932ec8c9f18a9adcdf3103f0e4edf0161181
+[06:01:33.022Z] boot1 baobit toolchain: 4be6e2d6f6a694942ef6cc333ff2b91f73966644
+[06:01:33.022Z] In-system keys have been generated
+[06:01:33.022Z] CM7 & debug confirmed fused off
+[06:01:33.022Z] Collateral erased
+[06:01:33.022Z] Boot1 receipts OK
+[06:01:33.022Z] Boot1 anti-rollback OK
+[06:01:34.236Z] >>> SENT help + audit (round 2)
+[06:01:34.988Z] >>> SENT bootwait check
+[06:01:35.239Z] >>> SENT boardtype
+[06:01:35.490Z] >>> SENT idmode
+[06:01:35.758Z] Command not recognized: 
+[06:01:35.758Z] Commands include: altboot, audit, boot, boardtype, bootwait, echo, idmode, ifr, localecho, lockdown, paranoid, reset, self_destruct, skipping, uf2
+[06:01:35.758Z] help
+[06:01:35.758Z] Command not recognized: help
+[06:01:35.758Z] Commands include: altboot, audit, boot, boardtype, bootwait, echo, idmode, ifr, localecho, lockdown, paranoid, reset, self_destruct, skipping, uf2
+[06:01:35.758Z] audit
+[06:01:35.758Z] Board type reads as: Oem
+[06:01:35.758Z] Boot partition is: Ok(PrimaryPartition)
+[06:01:35.758Z] Semver is: v0.10.1-0-gbcfdca404
+[06:01:35.758Z] Description is: Towards 0.10.1 beta-1
+[06:01:35.758Z] Stepping is: A0
+[06:01:35.758Z] Device serializer: d8a9fbb0-1b8cf420-3f6250c8-f19ed54c
+[06:01:35.758Z] Public serial number: CP4FCB
+[06:01:35.758Z] UUID: 18c26e7d-ebf4f0f3-1de80b4c-8ec4768c
+[06:01:35.758Z] Paranoid mode: 0/0
+[06:01:35.758Z] Possible attack attempts: 0
+[06:01:35.758Z] Revocations:
+[06:01:35.758Z] Stage       key0     key1     key2     key3
+[06:01:35.758Z] boot0       enabled  enabled  enabled  enabled  
+[06:01:35.758Z] boot1       enabled  enabled  enabled  enabled  
+[06:01:35.758Z] next stage  enabled  enabled  enabled  enabled  
+[06:01:35.758Z] Boot0: key 0/0 (bao1) -> 60000000
+[06:01:35.758Z] Boot1: key 2/2 (beta) -> 60020000
+[06:01:35.758Z] Next stage: key 2/2 (beta) -> 60060000
+[06:01:35.758Z] Erase proof: uninit or access denied
+[06:01:35.758Z] auto-audit limit: 3
+[06:01:35.758Z] boot0 partition: a0680a73106600c4ece34f9393fc5c8eed4885e844b1b78b58fb3a8a299a885cd794c667a5e787083bce46bf7aff8d3f4affa6a93a38ba7b507bb0d47c70fa01
+[06:01:35.758Z] boot0 code only: 563802e7f10fd0ca0a1c700c6313eff624aa57d9cd88d3c33af4b720eff5480432e01c116925a324a96e12d92953d7cb6076ea4557a22058e1a61be4c2b4dee2
+[06:01:35.758Z] boot0 baobit toolchain: 441559d7e1984623ec0a52f60f90240c740b6c41
+[06:01:35.758Z] boot1 partition: 6fa89f57e7c8333d53051bccaf93309be0844cefb91d55ce4960702840662a6337c55c60c66414fcd32aed381bf81663644deb83826dcad38c800ba4acecaa80
+[06:01:35.758Z] boot1 code only: 5d21a762c0093c9e1a50c958f875f2d4cf9d97f84ad9941b2f739c96d6531538e7ade13da90c4f7b242a15282ced932ec8c9f18a9adcdf3103f0e4edf0161181
+[06:01:35.758Z] boot1 baobit toolchain: 4be6e2d6f6a694942ef6cc333ff2b91f73966644
+[06:01:35.758Z] In-system keys have been generated
+[06:01:35.758Z] CM7 & debug confirmed fused off
+[06:01:35.758Z] Collateral erased
+[06:01:35.758Z] Boot1 receipts OK
+[06:01:35.758Z] Boot1 anti-rollback OK
+[06:01:35.758Z] bootwait check
+[06:01:35.758Z] bootwait is Enable
+[06:01:35.758Z] boardtype
+[06:01:35.758Z] Board type is set to: Oem
+[06:01:35.758Z] idmode
+[06:01:35.758Z] ID mode is: Ok(SerialNumber)

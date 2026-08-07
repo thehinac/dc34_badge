@@ -1,5 +1,9 @@
 # Chip-maker surface × QR / existing exploits — deep chain analysis
 
+> **Hardware note (2026-08-07):** VULN-1 and VULN-5 (L1/L2) are **VERIFIED** — see  
+> `qr-codes/exploits-real/VERIFIED.md`. QR panic → boot1 auto-escalation was **falsified**.  
+> boot1 `audit` identity dump **verified** with bootwait + serial.
+
 Sources reviewed (2026-08-07):
 
 | Repo | What we used |
@@ -112,24 +116,40 @@ Third-party `boot1` can keep `collateral` if OEM pubkeys differ; OEM images eras
 
 ## Attack chains: QR / known vulns → one step further
 
-### Chain 1 — QR DoS → boot1 (works on **this** lab badge)
+### Chain 1 — QR DoS → boot1 (**LIVE TESTED 2026-08-07 — partial**)
 
 ```text
 Preconditions: bootwait enabled (LAB: TRUE), USB serial attached
 
 1. Scan CVE-oob-short-15-aa.png  (VULN-1 HandleQr OOB panic)
-2. vault process panics / system reboots
-3. boot1 sees bootwait → stays in bootloader (serial + UF2)
-4. On boot1 serial:
-     audit          → SN, UUID, revocations, stepping (serial dump)
-     ifr            → IFR window dump
-     uf2 …          → reflash
+2. Observed: vault PID panics — NOT full SoC reboot
+3. bootwait does NOT engage (no boot1)
+4. OS console (dc34-console) and other PIDs stay up; vault is dead
 ```
 
-**Value:** escalate QR DoS into **controlled bootloader shell** without holding PROG.  
-**Not:** automatic k0 extraction (PDDB may survive reboot, but boot1 doesn’t print k0; OS dump tools don’t either).
+**Live capture:** `dc34-lab/captures/chain1_live.log`
 
-PoCs already in tree: `exploits-real/CVE-oob-*.png`.
+```text
+got qr data: +PL+PL+PL+PL+PL+PL+PLZ3, mode: GeneScan
+mode: GeneScan, s: +PL+PL+PL+PL+PL+PL+PLZ3
+PANIC in PID 13: … main.rs:624:40: range end index … length 15
+fatal runtime error: failed to initiate panic, error 5, aborting
+```
+
+Post-panic `test proc`: **PID 13 dc34-vault missing**; kernel…console still present.  
+`bootwait is true` still, but unit never left Xous.
+
+**Revised value of VULN-1:**
+- Hard DoS of badge UI / lights / QR / FIDO vault process until **manual full reboot**
+- Full QR payload + panic traceback on serial (info disclosure + reliability crash)
+- **Does not** auto-escalate to boot1 on this firmware
+
+**Still valid paths to boot1 (not QR-only):**
+- Power cycle / reset while `bootwait` enabled
+- Hold PROG on USB plug
+- Possibly other reboot vectors (`test deep`? physical button) — not QR panic
+
+PoCs: `exploits-real/CVE-oob-*.png`.
 
 ---
 
