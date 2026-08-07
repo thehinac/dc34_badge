@@ -30,7 +30,7 @@ See **[`qr-codes/exploits-real/ADVISORY.md`](qr-codes/exploits-real/ADVISORY.md)
 | VULN-2 | `get_padded_gamete().unwrap()` if no gene | Rare |
 | VULN-3 | `get_egg().unwrap()` after decrypt w/ no gene | Needs `k0` |
 | VULN-4 | Recipient nonce not cleared → same-session gene QR replay | Protocol |
-| VULN-5 | QR / password content logged to USB serial (Info) | Needs serial cable |
+| VULN-5 | Serial INFO dumps: full QR, **all TOTP secrets on Totp reload**, pwauth passwords, genes | Needs serial cable |
 
 **Not vulns:** `msg://`, `factory://`, `otpauth://`, `time://` (intentional features). No QR path to dump factory `k0` or RCE.
 
