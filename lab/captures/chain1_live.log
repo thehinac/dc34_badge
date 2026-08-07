@@ -1,0 +1,36 @@
+[05:57:48.979Z] === Chain 1 start port=COM18 baud=1000000 log=C:\Users\thehinac\dc34-lab\captures\chain1_live.log ===
+[05:57:48.979Z] ACTION: On badge, middle-button scan: exploits-real/CVE-oob-short-15-aa.png
+[05:57:48.979Z] Expect: vault panic / reboot / boot1 stay (bootwait=true)
+[05:57:49.011Z] OPEN COM18  available=['COM4', 'COM1', 'COM18']
+[05:57:49.168Z] [console] 
+[05:57:49.168Z] [console] 
+[05:58:41.332Z] WARN:bao1x_hal::udma::spim: Timeout in txrx_await(): Tx false Rx true Custom false, Rx SA: 1b90f, Rx Cfg: 90 (libs/bao1x-hal/src/udma/spim.rs:712)
+[05:58:41.332Z] INFO:bao1x_hal::udma::spim: Rx Cfg: 0 (libs/bao1x-hal/src/udma/spim.rs:739)
+[05:58:41.335Z] ERR :bao1x_hal::sh1107: timeout in draw (libs/bao1x-hal/src/sh1107.rs:808)
+[05:58:41.335Z] INFO:bao_video: resetting display spim block (services/bao-video/src/main.rs:1083)
+[05:59:22.481Z] INFO:bao_video: warmed up decoder with Ver1 (services/bao-video/src/main.rs:471)
+[05:59:22.481Z] INFO:bao_video: Camera pid 2145, mid 78 (services/bao-video/src/main.rs:534)
+[05:59:23.056Z] INFO:bao_video: 320x240 resolution setup with 256x240 slicing (services/bao-video/src/main.rs:541)
+[05:59:27.151Z] INFO:bao_video: FormatEcc (services/bao-video/src/main.rs:798)
+[05:59:30.212Z] INFO:dc34_vault::actions: QR code metadata: MetaData { version: Version(2), ecc_level: 3, mask: 1 } (src/actions.rs:1305)
+[05:59:30.212Z] INFO:dc34_vault::actions: got qr data: +PL+PL+PL+PL+PL+PL+PLZ3, mode: GeneScan (src/actions.rs:1328)
+[05:59:30.578Z] INFO:dc34_vault::actions: readout took 164 ms for 0 elements (src/actions.rs:1282)
+[05:59:30.737Z] INFO:dc34_vault: mode: GeneScan, s: +PL+PL+PL+PL+PL+PL+PLZ3 (src/main.rs:614)
+[05:59:31.058Z] PANIC in PID 13:PANIC in PID 13:
+[05:59:31.058Z] thread 'main' (1) panicked at src/main.rs:624:40:
+[05:59:31.058Z] range end indlength 15
+[05:59:31.058Z] ce of length 15
+[05:59:31.058Z] ce of length 15
+[05:59:31.217Z] PANIC in PID 13:fatal runtime error: failed to initiate panic, error 5, aborting
+
+=== POST-SCAN ANALYSIS 2026-08-07T01:00:26.5268084-05:00 ===
+VULN-1 CONFIRMED LIVE:
+  QR payload: +PL+PL+PL+PL+PL+PL+PLZ3
+  Panic: main.rs:624 range end index of length 15
+  PID 13 (dc34-vault) aborted
+
+CHAIN-1 BOOT1 ESCALATION: FAILED / FALSIFIED
+  After panic, OS console still alive on COM18
+  bootwait=true but NO SoC reboot into boot1
+  Conclusion: vault process panic does not trigger full reboot under bootwait
+
