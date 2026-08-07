@@ -1,0 +1,8 @@
+{
+  "created": "20260807T042719Z",
+  "nonce_hex": "40b845edcd2bf227aaa357ed",
+  "phase1_b45": "7F9 /E-XUZ 6G5CSFW-XP88A888 $88.PQRUXPL95B",
+  "header_hex": "49db7671f34435ed5fddffdfcbb7508a",
+  "note": "Scan this QR with TARGET badge (middle button). Badge must act as DONOR and show gene response QR.",
+  "warning": "Do NOT run test k0 on the target badge."
+}

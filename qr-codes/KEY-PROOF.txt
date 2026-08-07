@@ -1,0 +1,12 @@
+KEY PROOF (success)
+===================
+Response: *.A:E4M6B4VTLBR-GVNCSNMRSKJDOLTYLPJN7OJ638CX8W3D
+Challenge nonce: 554760d40f7b955f02713466
+Decrypt OK with k0 = 0x42 * 32
+Plaintext gene: 01f4ae54e7878a92c100000000000005  (badge type Human=5)
+
+So:
+- install-key worked
+- AES-GCM-SIV + base45 match the badge
+- Earlier "Authentication error" was NOT bad crypto; it was wrong/expired nonce
+  or scanning a phase-1 QR when a gene QR was needed (or vice versa)

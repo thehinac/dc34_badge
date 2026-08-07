@@ -1,0 +1,11 @@
+{
+  "ingested": "2026-08-07T04:27:33.725969+00:00",
+  "nonce_hex": "554760d40f7b955f02713466",
+  "ciphertext_hex": "56a322465827eadcd797f830dfafd98899ebaa62ac34b95f9a8a3fd54521677c",
+  "ciphertext_len": 32,
+  "response_b45": "*.A:E4M6B4VTLBR-GVNCSNMRSKJDOLTYLPJN7OJ638CX8W3D",
+  "plaintext_structure": "16-byte gamete: haploid[9] + pad + badge_type@15 under AES-256-GCM-SIV",
+  "decrypted_with": "0x42*32",
+  "plaintext_hex": "01f4ae54e7878a92c100000000000005",
+  "badge_type_byte": 5
+}
