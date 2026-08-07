@@ -9,9 +9,12 @@ DEF CON 34 Baochip badge research: **verified** QR parser bugs, serial secret le
 > | **VULN-1** | Short Base45 QR → vault OOB panic DoS | **VALID / VERIFIED** |
 > | **VULN-5 L1** | Full QR text logged to USB serial | **VALID / VERIFIED** |
 > | **VULN-5 L2** | TOTP `secret:` cleartext via `TotpRecord::try_from` on serial | **VALID / VERIFIED** |
+> | **VULN-6** | Unauthenticated TOTP overwrite via otpauth QR | **VALID / VERIFIED** |
+> | **VULN-7** | Newline/field injection into TOTP text records | **VALID / VERIFIED** |
+> | **VULN-8** | Colon in secret breaks TOTP UI (entry DoS) | **VALID / VERIFIED** |
+> | **VULN-9** | Weak digits / HOTP counter validation | **VALID / VERIFIED** |
 >
-> Full writeup + serial excerpts: **[`qr-codes/exploits-real/VERIFIED.md`](qr-codes/exploits-real/VERIFIED.md)**  
-> Advisory: **[`qr-codes/exploits-real/ADVISORY.md`](qr-codes/exploits-real/ADVISORY.md)**
+> Writeups: **[`VERIFIED.md`](qr-codes/exploits-real/VERIFIED.md)** · **[`TOTP-VULNS-VERIFIED.md`](qr-codes/exploits-real/TOTP-VULNS-VERIFIED.md)** · **[`ADVISORY.md`](qr-codes/exploits-real/ADVISORY.md)**
 
 Research against production DC34 firmware (camera + USB serial @ 1M 8N1) and open source:
 
