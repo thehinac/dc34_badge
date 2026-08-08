@@ -1,0 +1,112 @@
+Hello Baochip / DC34 badge team,
+
+I am writing to report a set of local vulnerabilities and attack-chain observations on the DEF CON 34 Baochip (baosec-lite) badge, researched on lab hardware during DC34 (2026-08-07 through 2026-08-08). This is notify plus public technical writeup for coordinated awareness. We are not publishing population light-key material or gene-oracle ciphertexts.
+
+Public package (advisories, chains, open pipeline):
+https://github.com/thehinac/dc34_badge
+
+Findings index:
+https://github.com/thehinac/dc34_badge/blob/main/disclosure/FINDINGS-INDEX.md
+
+Advisories:
+https://github.com/thehinac/dc34_badge/tree/main/disclosure
+
+Researcher: thehinac
+GitHub: https://github.com/thehinac/dc34_badge
+
+========================================================================
+VERIFIED FINDINGS
+========================================================================
+
+A. Boot1 update mode (USB MSC / serial uf2)
+
+VULN-10 — Unsigned UF2 accepted into RRAM loader/kernel window (and MSC SPI swap pages); signature checked only at try_boot.
+  Impact: integrity / DoS until reflash; signed implant only if keys held; not free unsigned code execution.
+  Detail: https://github.com/thehinac/dc34_badge/blob/main/disclosure/01-UF2-unsigned-write-oracle.md
+
+VULN-11 — MSC vs serial STORAGE_END bound inconsistency (no keyband overflow observed).
+
+VULN-12 — MSC swap path requires payload_size == 256; other sizes panic and hang update mode until power cycle (recoverable).
+  Detail: https://github.com/thehinac/dc34_badge/blob/main/disclosure/02-MSC-swap-payload-panic.md
+
+VULN-13 — UF2 block_no / num_blocks not enforced.
+
+Lab boot1 identity: v0.10.1-0-gbcfdca404
+UF2 family ID (public): 0xa7d76373
+
+B. Stock OS console (USB serial at 1_000_000 baud)
+
+VULN-14 — test k0 <base64> remains on stock builds: unauthenticated write of 32-byte light key plus CRC via save_k0 (write-only; does not dump the prior key).
+  Impact: integrity of mating / gene keying on units that still hold population material.
+
+VULN-15 — test bootwait enable from any serial session forces next cold boot into update mode (stages VULN-10 without physical PROG).
+
+Detail: https://github.com/thehinac/dc34_badge/blob/main/disclosure/03-stock-console-factory-surfaces.md
+
+Note: read-only k0check is correctly gated (hazardous-test); write is not.
+
+C. Application / QR (same repo; included for completeness)
+
+VULN-1  — Short Base45 QR causes vault OOB panic DoS (hardware verified).
+VULN-5  — Full QR text and TOTP secrets logged to USB serial (hardware verified).
+VULN-6–9 — TOTP overwrite, field injection, UI DoS, weak digits/HOTP validation.
+
+========================================================================
+ATTACK CHAINS
+========================================================================
+
+Full writeup: https://github.com/thehinac/dc34_badge/blob/main/disclosure/04-attack-chains.md
+
+Chain A: bootwait (VULN-15) or physical entry to update mode, then unsigned UF2 / swap panic (VULN-10/12). DoS and integrity only; try_boot still requires a valid signature.
+
+Chain B: USB serial, then test k0 write (VULN-14) overwrites light key.
+
+Chain C: after developer-signed path / erase_secrets, sticky DEVELOPER_MODE and post-wipe bootkit-style RRAM persist (lab only). Not a virgin first foothold.
+
+Falsified or closed in our lab:
+- QR application bugs to boot compromise
+- UF2 past STORAGE_END into keyband
+- Software "any unsigned swap" on factory loader (lab factory loader.uf2 is post-bda6df7)
+- Devkey custom firmware as a nondestructive population k0 dump (erase_secrets before app by design)
+
+========================================================================
+UNFINISHED: PRODUCTION FIRST AE / POPULATION K0
+========================================================================
+
+We are not claiming production first arbitrary code execution on virgin silicon without signing keys or a hardware attack.
+
+Open map:
+https://github.com/thehinac/dc34_badge/blob/main/disclosure/05-unfinished-first-AE.md
+https://github.com/thehinac/dc34_badge/blob/main/FULL-EXPLOIT-PIPELINE.md
+
+Still-open classes:
+1. Residual SPI physical TOCTOU / dual-image on external NOR (schematic U2 ZD25Q64BSIGT) under the loader fresh-swap path. Classic non-zero-key software skip was fixed in bda6df7; load-time ed25519ph rehash hardens simple check-then-rewrite.
+   https://github.com/thehinac/dc34_badge/blob/main/disclosure/06-loader-swap-TOCTOU-status.md
+2. Fault injection on validate_image / erase policy.
+3. New stock software read of in-RAM k0 or PDDB plaintext (none found in our review).
+4. Offline Ko recovery after public Kp day schedule (protocol design; we will not publish population samples or keys).
+
+========================================================================
+SUGGESTED FIXES
+========================================================================
+
+1. UF2 (VULN-10/11/13): require signature or device-bound MAC before programming; align MSC and serial ranges; enforce block counters; reject addr+len past STORAGE_END.
+2. MSC swap (VULN-12): no unwrap on payload length; require 256; recoverable error path.
+3. Console (VULN-14/15): gate test k0 and test bootwait behind factory-only feature flags that are off in production, or require physical confirmation.
+4. QR/serial (VULN-1/5-9): bounds-check Base45 decode paths; remove secret material from Info logs; harden otpauth enrollment.
+5. SPI residual: keep first presentation of signed swap controlled; device-encrypt swap ASAP; continue dual-read / bollard hardening.
+
+========================================================================
+SCOPE / ETHICS
+========================================================================
+
+- Research on lab / researcher-owned units; no intentional disruption of other attendees badges.
+- No population k0, Ko, or live gene-oracle ciphertext dumps in the public repository.
+- Happy to answer questions, share extra reproduction notes, or hold further public detail on any item if you prefer a short embargo window for a patch (latest.zip / CI).
+
+Thank you for the open platform and the intentional red-team surface. The post-bda6df7 loader work and clear developer-mode wipe policy are appreciated.
+
+Best regards,
+thehinac
+https://github.com/thehinac/dc34_badge
+https://github.com/thehinac/dc34_badge/tree/main/disclosure
