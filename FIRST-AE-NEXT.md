@@ -68,7 +68,7 @@ Classic. Authors already use delays, bollards, dual reads. Needs glitch rig. Hig
 
 - `SPI-TOCTOU-LAB-PLAN.md` — lab L0–L4 SPI/FI plan, what gear is needed  
 - `kp_verify_workflow.md` + `tools/kp_offline_verify.py` — population k0 via Ko‖Kp + virgin oracle  
-- Virgin samples already in `captures/virgin_VIRGIN-PENDING_*/gene/virgin_oracle_index.json`
+- Virgin gene samples: held **local only** (not in this public repo)
 
 ---
 

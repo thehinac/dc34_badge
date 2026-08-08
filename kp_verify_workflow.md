@@ -91,7 +91,7 @@ Use Python 3.12 if `python` is a Store stub:
 
 ```powershell
 cd (local lab tree)
-$py = "C:\Users\thehinac\AppData\Local\Programs\Python\Python312\python.exe"
+$py = "python"  # or full path to Python 3.12+
 
 # Crypto plumbing selftest (synthetic 0x42 + real index load)
 & $py tools/kp_offline_verify.py selftest

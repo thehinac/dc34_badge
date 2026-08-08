@@ -2,7 +2,7 @@
 
 **Goal:** Prove (or disprove) a **lab** path to first arbitrary code exec via the loader **fresh-swap** SPI window, without wiping a virgin population `k0`.  
 **Endgame:** If lab AE is real, instrument dump → restore factory → repeat only if still non-destructive on virgin; else use gene/`Kp` offline path for population `k0`.  
-**Policy:** **Lab (CP4FCB) disposable.** Virgin: **no** UF2, **no** `test k0`, **no** bootwait, **no** SPI rewrite.
+**Policy:** **Lab unit disposable.** Virgin/population: **no** UF2, **no** `test k0`, **no** bootwait, **no** SPI rewrite.
 
 Related: `SWAP-TOCTOU-MAP-AND-TESTPLAN.md` (software `bda6df7` map), `FIRST-AE-NEXT.md`, `ATTACK-CHAIN.md`, `K0-CUSTOM-FW-DUMP.md`.
 
@@ -53,7 +53,7 @@ Hand to DEF CON: **population `k0` material for validation** — prefer offline 
 
 ## 2 — Lab prep (non-negotiable)
 
-1. Label badges: **LAB-CP4FCB** vs **VIRGIN** (never swap cables mentally).  
+1. Label badges: **LAB** vs **VIRGIN** (never swap cables mentally).  
 2. Factory restore triple ready: `factory-fw/extracted/{loader,xous,swap}.uf2`.  
 3. Scripts ready: `tools/factory_restore_live.py`, serial capture @ **1 000 000** baud.  
 4. Baseline serial log: cold boot lab → save `captures/spi_toctou/L0_baseline_<ts>.log`.  
