@@ -10,3 +10,14 @@ Thumbs.db
 .vscode/
 .idea/
 *.swp
+
+# Secrets / population crypto (never publish)
+**/virgin_oracle*.json
+**/population_k0*
+**/private/
+captures/**/gene/
+*_VALIDATED*
+kp_day*.txt
+lab_spi_*.bin
+*.bin
+!qr-codes/**/*.png

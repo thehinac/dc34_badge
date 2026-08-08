@@ -284,3 +284,23 @@ dc34-console cmds/test.rs                  # k0 write, bootwait, proc
 
 The chip makers left a **rich factory/dev plane** (boot1 + public devkey + UF2 + audit). It is mostly **gated by physical USB + bootwait/PROG**, not by QR.  
 Our QR work **does** reach that plane on a bootwait-enabled unit via **panic→reboot**, and separately maxes **application log exfil** over the same serial cable.
+
+---
+
+## Boot / console campaign (2026-08-07 … 08) — addendum
+
+Full advisory package lives under **`disclosure/`**. Summary:
+
+| Layer | Verified |
+|-------|----------|
+| B — boot1 | VULN-10 unsigned UF2 write; VULN-12 MSC swap panic; VULN-11/13 bounds/multi-block |
+| C — console | VULN-14 `test k0` write; VULN-15 `test bootwait enable` |
+| A — RoT | Still no QR/app path; first AE open (SPI/FI/SW/keys) |
+
+**Chain A:** VULN-15 or physical → update mode → VULN-10/12.  
+**Chain B:** serial → VULN-14.  
+**Chain C:** post-wipe bootkit only.
+
+Factory loader is **post-`bda6df7`** (software swap skip-sig fixed). Residual SPI physical TOCTOU remains research-only.
+
+See `disclosure/FINDINGS-INDEX.md` and `FULL-EXPLOIT-PIPELINE.md`.
