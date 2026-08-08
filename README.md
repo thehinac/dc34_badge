@@ -101,6 +101,11 @@ Still open for virgin units without signing keys:
 | `lab/tools/` | Serial watchers, boot1 helpers |
 | `CHIP-SURFACE-CHAINS.md` | Layer A/B/C trust model |
 | `FULL-EXPLOIT-PIPELINE.md` | Completed vs open pipeline map |
+| `SPI-TOCTOU-LAB-PLAN.md` | Lab SPI TOCTOU experiment plan |
+| `SPI-SHOPPING-AND-SETUP.md` | Core-module flash IC + vendor shopping |
+| `FIRST-AE-NEXT.md` | First-AE leads ranked |
+| `kp_verify_workflow.md` | Offline Ko||Kp verify workflow (no samples) |
+| `DISCORD-INTEL.md` | Public community intel summary (no secrets) |
 
 ---
 
@@ -150,3 +155,4 @@ Overwrites light key. **Never** on someone else’s badge.
 ## License
 
 Research artifacts for DEF CON educational / coordinated disclosure use. Upstream firmware remains under its own licenses.
+
